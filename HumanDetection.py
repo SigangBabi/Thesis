@@ -5,7 +5,7 @@ from ultralytics import YOLO
 #Arduino Communication
 
 
-model = YOLO(f'bestest.pt')
+model = YOLO(f'best.pt')
 
 boundingBoxAnnotator = sv.BoxAnnotator()
 labelAnnotator = sv.LabelAnnotator()
@@ -20,6 +20,7 @@ line_width = 450
 
 if not cap.isOpened():
     print("Unable to read Camera Feed")
+    exit()
 
 cap.set(cv2.CAP_PROP_FPS, 90)  # Try setting to 60 FPS or a higher value
 
@@ -62,9 +63,7 @@ while True:
 
     cv2.imshow('Webcam', annotatedImages)
 
-    k = cv2.waitKey(1)
-
-    if k%256 == 27:
+    if cv2.waitKey(1) & 0xFF == ord('q'):
         print("Closing Webcam")
         break
 

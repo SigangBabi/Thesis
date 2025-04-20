@@ -15,15 +15,6 @@ while True:
 #open webcam
     cv2.imshow('Webcam', frame)
 
-#capture pictures while webcam is open
-    filename = f"capture_{count}.jpg"
-    cv2.imwrite(filename, frame)
-    print(f"Image saved: {filename}")
-    count += 1
-
-#delayed by 3 seconds to ensure that the webcam will not loop
-    time.sleep(3)
-
 #close webcam
     k = cv2.waitKey(1)
 
